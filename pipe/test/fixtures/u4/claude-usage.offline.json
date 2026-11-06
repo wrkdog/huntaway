@@ -1,0 +1,84 @@
+{
+ "argv": [
+  "claude",
+  "-p",
+  "/usage",
+  "--output-format",
+  "json",
+  "--strict-mcp-config",
+  "--mcp-config",
+  "{\"mcpServers\":{}}",
+  "--setting-sources",
+  "",
+  "--no-session-persistence",
+  "--tools",
+  ""
+ ],
+ "exit": 0,
+ "stdout": {
+  "is_error": false,
+  "duration_api_ms": 0,
+  "num_turns": 0,
+  "stop_reason": null,
+  "session_id": "<session_id>",
+  "total_cost_usd": 0,
+  "usage": {
+   "output_tokens_details": {
+    "thinking_tokens": 0
+   },
+   "input_tokens": 0,
+   "cache_creation_input_tokens": 0,
+   "cache_read_input_tokens": 0,
+   "output_tokens": 0,
+   "server_tool_use": {
+    "web_search_requests": 0,
+    "web_fetch_requests": 0
+   },
+   "service_tier": "<service_tier>",
+   "cache_creation": {
+    "ephemeral_1h_input_tokens": 0,
+    "ephemeral_5m_input_tokens": 0
+   },
+   "inference_geo": "<inference_geo>",
+   "iterations": [],
+   "speed": "<speed>"
+  },
+  "modelUsage": {},
+  "permission_denials": [],
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "<fast_mode_disabled_reason>",
+  "subagent_stats": {
+   "spawned": 0,
+   "requested": {
+    "background": 0,
+    "foreground": 0,
+    "unset": 0
+   },
+   "started_in_background": 0,
+   "max_depth": 0,
+   "spawned_by_subagents": 0,
+   "completed": 0,
+   "failed": 0,
+   "killed": {
+    "parent": 0,
+    "user": 0,
+    "system": 0
+   },
+   "refused": {
+    "depth_limit": 0,
+    "concurrency_limit": 0,
+    "budget": 0
+   },
+   "by_type": {}
+  },
+  "subtype": "success",
+  "result": "You are currently using your subscription to power your Claude Code usage\n\nCurrent session: 16% used \u00b7 resets Sep 24 at 10:59pm (America/New_York)\nCurrent week (all models): 85% used \u00b7 resets Sep 29 at 8:59pm (America/New_York)\nCurrent week (Fable): 16% used \u00b7 resets Sep 29 at 8:59pm (America/New_York)\n\nWhat's contributing to your limits usage?\nApproximate, based on local sessions on this machine \u2014 does not include other devices or claude.ai. Behaviors are independent characteristics, not a breakdown.\n\nLast 24h \u00b7 13061 requests \u00b7 64 sessions\n  91% of your usage was at >150k context\n  89% of your usage came from subagent-heavy sessions\n  83% of your usage was while 4+ sessions ran in parallel\n  82% of your usage came from sessions active for 8+ hours\n  Top subagents: general-purpose 6%, Plan 1%, Explore 1%\n\nLast 7d \u00b7 29981 requests \u00b7 133 sessions\n  91% of your usage came from subagent-heavy sessions\n  83% of your usage was at >150k context\n  77% of your usage came from sessions active for 8+ hours\n  57% of your usage was while 4+ sessions ran in parallel\n  Top subagents: general-purpose 9%, workflow-subagent 6%, Explore 2%, Plan 1%",
+  "local_command": "<local_command>",
+  "type": "result",
+  "duration_ms": 1472,
+  "uuid": "<uuid>",
+  "queued_turn_count": 0,
+  "result_index": 0
+ },
+ "stderr": ""
+}

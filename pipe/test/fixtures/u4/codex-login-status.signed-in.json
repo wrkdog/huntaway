@@ -1,0 +1,10 @@
+{
+ "argv": [
+  "codex",
+  "login",
+  "status"
+ ],
+ "exit": 0,
+ "stdout": "",
+ "stderr": "Logged in using ChatGPT\n"
+}

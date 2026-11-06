@@ -1,0 +1,4 @@
+{"type": "thread.started", "thread_id": "<REDACTED>"}
+{"type": "turn.started"}
+{"type": "item.completed", "item": {"id": "<REDACTED>", "type": "agent_message", "text": "CODEX-BACK-OK"}}
+{"type": "turn.completed", "usage": {"input_tokens": 14319, "cached_input_tokens": 11008, "cache_write_input_tokens": 0, "output_tokens": 10, "reasoning_output_tokens": 0}}

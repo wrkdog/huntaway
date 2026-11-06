@@ -1,0 +1,276 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:huntaway:contract:status:1",
+  "title": "Huntaway status snapshot, version 1",
+  "description": "What Huntaway reports about the owner's own machines and the local runs placed on them. Codes, not words: the front end owns every label. Machine aliases only, never hostnames, addresses or paths. No prompt, answer or file content ever appears here.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "source",
+    "asOf",
+    "machines",
+    "runs"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "source": {
+      "description": "\"fixture\" for sample data, \"live\" only for a real reading. A front end must never show fixture data as real.",
+      "enum": [
+        "fixture",
+        "live"
+      ]
+    },
+    "asOf": {
+      "description": "When this whole snapshot was taken (UTC). The front end shows \"Status unknown\" when it goes stale.",
+      "$ref": "#/$defs/instant"
+    },
+    "machines": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/machine"
+      }
+    },
+    "runs": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/run"
+      }
+    }
+  },
+  "$defs": {
+    "instant": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]{1,3})?Z$"
+    },
+    "alias": {
+      "description": "The owner's short name for one of their machines, for example Studio or My Mac mini: letters, digits, spaces, '_' and '-', at most 32, starting with a letter or digit and not ending with a space. Never a dotted hostname or an address.",
+      "type": "string",
+      "pattern": "^[A-Za-z0-9](?:[A-Za-z0-9 _-]{0,30}[A-Za-z0-9_-])?$"
+    },
+    "machine": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "alias",
+        "online",
+        "lastSeenAt",
+        "subscriptions"
+      ],
+      "properties": {
+        "alias": {
+          "$ref": "#/$defs/alias"
+        },
+        "online": {
+          "type": "boolean"
+        },
+        "lastSeenAt": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/instant"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "subscriptions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/subscription"
+          }
+        }
+      }
+    },
+    "subscription": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "family",
+        "room",
+        "resetsAt"
+      ],
+      "properties": {
+        "family": {
+          "enum": [
+            "claude",
+            "codex",
+            "gemini"
+          ]
+        },
+        "room": {
+          "description": "Headroom in words. plenty: 50% or more left; some: 20-49%; low: 1-19%; none: 0% or exhausted; credits: the plan's allowance is spent but the account keeps working on credits the fleet reports usable (resetsAt is when the plan's allowance returns); unknown: the vendor offers no reading (today: gemini).",
+          "enum": [
+            "plenty",
+            "some",
+            "low",
+            "none",
+            "credits",
+            "unknown"
+          ]
+        },
+        "resetsAt": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/instant"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "run": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "runId",
+        "code",
+        "status",
+        "statusSince",
+        "asOf",
+        "lastActivityAt",
+        "placement",
+        "placedBy",
+        "worker"
+      ],
+      "properties": {
+        "runId": {
+          "description": "Stable, opaque.",
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_-]{8,64}$"
+        },
+        "code": {
+          "enum": [
+            "waiting_owner_ok",
+            "waiting_local_host",
+            "running",
+            "done",
+            "cancelled",
+            "declined",
+            "expired_not_run",
+            "failed",
+            "uncertain"
+          ]
+        },
+        "status": {
+          "description": "Coarse bucket, so an older front end degrades gracefully if a code is added later.",
+          "enum": [
+            "waiting",
+            "active",
+            "ended"
+          ]
+        },
+        "statusSince": {
+          "$ref": "#/$defs/instant"
+        },
+        "asOf": {
+          "$ref": "#/$defs/instant"
+        },
+        "lastActivityAt": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/instant"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "placement": {
+          "enum": [
+            "local",
+            "cloud"
+          ]
+        },
+        "placedBy": {
+          "enum": [
+            "conversation",
+            "folder",
+            "channel",
+            "default"
+          ]
+        },
+        "worker": {
+          "description": "The machine alias the run is placed on (or ran on). Null only when no machine applies.",
+          "oneOf": [
+            {
+              "$ref": "#/$defs/alias"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "confirmUrl": {
+          "description": "Deep link to the owner's own confirmation card and its thread (https only).",
+          "type": "string",
+          "pattern": "^https://[A-Za-z0-9.-]+/[^\\s]*$"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "code": {
+                "enum": [
+                  "waiting_owner_ok",
+                  "waiting_local_host"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "status": {
+                "const": "waiting"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "code": {
+                "const": "running"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "status": {
+                "const": "active"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "code": {
+                "enum": [
+                  "done",
+                  "cancelled",
+                  "declined",
+                  "expired_not_run",
+                  "failed",
+                  "uncertain"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "status": {
+                "const": "ended"
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

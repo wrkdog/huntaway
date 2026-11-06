@@ -1,0 +1,17 @@
+{
+ "argv": [
+  "claude",
+  "auth",
+  "status"
+ ],
+ "exit": 1,
+ "stdout": {
+  "loggedIn": false,
+  "authMethod": "none",
+  "apiProvider": "firstParty",
+  "analyticsDisabled": false,
+  "projectsDirectory": "<projectsDirectory>",
+  "configDirectory": "<configDirectory>"
+ },
+ "stderr": ""
+}

@@ -1,0 +1,10 @@
+{
+ "argv": [
+  "codex",
+  "login",
+  "status"
+ ],
+ "exit": 1,
+ "stdout": "",
+ "stderr": "Not logged in\n"
+}

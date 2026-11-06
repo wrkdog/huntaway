@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-09-30T02:06:48.123178Z",
+  "maxAgeSeconds": 300,
+  "units": "percent_of_provider_window",
+  "routingReadiness": "not_checked",
+  "hosts": [
+    { "nodeId": "laptop", "status": "observed", "host": "laptop-host.example", "user": "someone", "observedAt": "2026-09-30T02:06:48.123178Z",
+      "providers": [
+        { "family": "claude", "authenticated": true, "accountFingerprint": "aaaa1111", "status": "observed", "observedAt": "2026-09-30T02:06:35.039555Z", "cliPath": "/opt/example/claude" },
+        { "family": "codex", "authenticated": true, "accountFingerprint": "bbbb2222", "status": "observed", "observedAt": "2026-09-30T02:06:26.351904Z", "cliPath": "/opt/example/codex" },
+        { "family": "google", "authenticated": null, "accountFingerprint": null, "status": "unknown", "observedAt": "2026-09-30T02:06:24.917092Z", "reason": "no_verified_read_only_subscription_quota_interface" } ] },
+    { "nodeId": "studio", "status": "observed", "host": "studio-host.example", "user": "someone", "observedAt": "2026-09-30T02:06:48.056641Z",
+      "providers": [
+        { "family": "claude", "authenticated": true, "accountFingerprint": "cccc3333", "status": "observed", "observedAt": "2026-09-30T02:06:37.353877Z" },
+        { "family": "codex", "authenticated": true, "accountFingerprint": "dddd4444", "status": "observed", "observedAt": "2026-09-30T02:06:25.091727Z" } ] },
+    { "nodeId": "mini", "status": "unavailable", "host": "mini-host.example", "user": "someone", "observedAt": "2026-09-29T23:58:03Z",
+      "providers": [] },
+    { "nodeId": "spare", "status": "observed", "host": "spare-host.example", "user": "someone", "observedAt": "2026-09-30T02:06:40Z",
+      "providers": [ { "family": "claude", "authenticated": true, "accountFingerprint": "eeee5555", "status": "observed", "observedAt": "2026-09-30T02:06:40Z" } ] }
+  ],
+  "pools": [
+    { "family": "claude", "accountFingerprint": "aaaa1111", "hosts": ["laptop"], "windows": [
+      { "bucket": "weekly:all models", "usedPercent": 30, "remainingPercent": 70, "resetAt": "2026-10-04T02:00:00Z", "state": "observed" },
+      { "bucket": "weekly:fable", "usedPercent": 6, "remainingPercent": 94, "resetAt": "2026-10-04T02:00:00Z", "state": "observed" } ] },
+    { "family": "codex", "accountFingerprint": "bbbb2222", "hosts": ["laptop"], "windows": [
+      { "bucket": "codex:primary", "usedPercent": 100, "remainingPercent": 0, "resetAt": "2026-10-03T17:03:40Z", "state": "observed" } ] },
+    { "family": "claude", "accountFingerprint": "cccc3333", "hosts": ["studio"], "windows": [
+      { "bucket": "session", "usedPercent": 81, "remainingPercent": 19, "resetAt": "2026-09-30T06:20:00Z", "state": "observed" },
+      { "bucket": "weekly:all models", "usedPercent": 0, "remainingPercent": 100, "resetAt": "2026-10-07T01:00:00Z", "state": "observed" } ] },
+    { "family": "codex", "accountFingerprint": "dddd4444", "hosts": ["studio"], "windows": [
+      { "bucket": "codex:primary", "usedPercent": 50, "remainingPercent": 50, "resetAt": "2026-10-03T17:31:42.500123Z", "state": "observed" } ] },
+    { "family": "claude", "accountFingerprint": "eeee5555", "hosts": ["spare"], "windows": [
+      { "bucket": "weekly:all models", "usedPercent": 10, "remainingPercent": 90, "resetAt": "2026-10-05T00:00:00Z", "state": "observed" } ] }
+  ],
+  "sharedTopology": [ { "host": "spare", "sharesWith": "laptop", "evidence": "operator_configured" } ],
+  "notes": []
+}

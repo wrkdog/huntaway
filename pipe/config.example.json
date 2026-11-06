@@ -1,0 +1,19 @@
+{
+  "hostAlias": "my-mac",
+  "accounts": [
+    {"id": "claude-a", "provider": "claude", "loginDir": "/absolute/path/to/isolated/claude-login", "fingerprint": "observed-pin", "maxConcurrency": 1, "enabled": true},
+    {"id": "codex-a", "provider": "codex", "loginDir": "/absolute/path/to/isolated/codex-home", "fingerprint": "observed-pin", "maxConcurrency": 1, "enabled": true}
+  ],
+  "policy": {
+    "claude": {"models": {"opus": "default", "fable": "hard"}, "efforts": ["low", "medium", "high", "xhigh", "max"]},
+    "codex": {"models": {"gpt-6.1-sol": "default", "gpt-6-astra": "hard"}, "efforts": ["low", "medium", "high", "xhigh", "max", "ultra"]}
+  },
+  "storePath": "/absolute/path/to/pipe.sqlite",
+  "worktreeRoot": "/absolute/path/to/worktrees",
+  "housekeeping": {"batch": 100, "saveTimeoutMs": 120000, "removeTimeoutMs": 600000},
+  "reviewGitTimeoutMs": 120000,
+  "workDir": "/absolute/path/to/work",
+  "cli": {"claude": "claude", "codex": "codex"},
+  "tokenFile": "/absolute/path/to/pipe.token",
+  "port": 8123
+}

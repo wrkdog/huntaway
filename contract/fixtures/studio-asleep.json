@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "source": "fixture",
+  "asOf": "2026-09-30T02:45:00Z",
+  "machines": [
+    {
+      "alias": "Studio",
+      "online": false,
+      "lastSeenAt": "2026-09-29T23:58:03Z",
+      "subscriptions": [
+        {
+          "family": "claude",
+          "room": "plenty",
+          "resetsAt": "2026-10-07T01:00:00Z"
+        },
+        {
+          "family": "codex",
+          "room": "none",
+          "resetsAt": "2026-10-03T17:31:42Z"
+        },
+        {
+          "family": "gemini",
+          "room": "unknown",
+          "resetsAt": null
+        }
+      ]
+    },
+    {
+      "alias": "Mini",
+      "online": true,
+      "lastSeenAt": "2026-09-30T02:44:40Z",
+      "subscriptions": [
+        {
+          "family": "claude",
+          "room": "some",
+          "resetsAt": "2026-10-04T07:59:00Z"
+        },
+        {
+          "family": "codex",
+          "room": "none",
+          "resetsAt": "2026-10-03T17:18:24Z"
+        }
+      ]
+    }
+  ],
+  "runs": [
+    {
+      "runId": "run_fx_waiting_11",
+      "code": "waiting_local_host",
+      "status": "waiting",
+      "statusSince": "2026-09-30T00:05:00Z",
+      "asOf": "2026-09-30T02:45:00Z",
+      "lastActivityAt": null,
+      "placement": "local",
+      "placedBy": "default",
+      "worker": "Studio",
+      "confirmUrl": "https://example.slack.com/archives/D00000000/p1759200000000100"
+    }
+  ]
+}

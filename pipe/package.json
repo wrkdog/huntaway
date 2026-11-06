@@ -1,0 +1,19 @@
+{
+  "name": "pipe",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Route LLM work across your own subscriptions on one machine.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "test": "node --test \"test/**/*.test.ts\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.4",
+    "typescript": "7.0.2"
+  }
+}

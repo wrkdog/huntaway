@@ -1,0 +1,3 @@
+{"type": "system", "subtype": "init", "session_id": "session-limit", "model": "claude-opus-5-5", "tools": [], "mcp_servers": [], "apiKeySource": "none"}
+{"type": "rate_limit_event", "rate_limit_info": {"status": "rejected", "rateLimitType": "seven_day", "resetsAt": 1790000000}, "session_id": "session-limit"}
+{"type": "result", "subtype": "error_during_execution", "is_error": true, "session_id": "session-limit", "errors": [{"message": "You've hit your weekly usage limit. Resets Sep 21 at 2:13pm (UTC)."}]}

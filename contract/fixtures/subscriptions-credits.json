@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "source": "fixture",
+  "asOf": "2026-09-30T14:10:00Z",
+  "machines": [
+    {
+      "alias": "Studio",
+      "online": true,
+      "lastSeenAt": "2026-09-30T14:09:52Z",
+      "subscriptions": [
+        {
+          "family": "claude",
+          "room": "some",
+          "resetsAt": "2026-10-07T01:00:00Z"
+        },
+        {
+          "family": "codex",
+          "room": "credits",
+          "resetsAt": "2026-10-03T17:18:24Z"
+        }
+      ]
+    }
+  ],
+  "runs": []
+}

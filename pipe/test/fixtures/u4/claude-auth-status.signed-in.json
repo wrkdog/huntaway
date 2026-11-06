@@ -1,0 +1,21 @@
+{
+ "argv": [
+  "claude",
+  "auth",
+  "status"
+ ],
+ "exit": 0,
+ "stdout": {
+  "loggedIn": true,
+  "authMethod": "claude.ai",
+  "apiProvider": "firstParty",
+  "analyticsDisabled": false,
+  "projectsDirectory": "<projectsDirectory>",
+  "configDirectory": "<configDirectory>",
+  "email": "<email>",
+  "orgId": "<orgId>",
+  "orgName": "<orgName>",
+  "subscriptionType": "max"
+ },
+ "stderr": ""
+}
