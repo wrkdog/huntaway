@@ -8,7 +8,8 @@ agree on disclosure with you.
 
 ## Supported versions
 
-Only the latest commit on `main` is supported. Update by pulling and running the installer again.
+Only the latest commit on `main` and the latest npm and Homebrew package are supported. From source, update by pulling
+and running the installer again. From a package, update with npm or Homebrew.
 
 ## How the `huntaway` command protects you
 
@@ -31,11 +32,25 @@ Each of these is covered by the tests named in brackets.
 - **A contained install.** The installer uses no network access or sudo, writes only inside your home folder, refuses
   symbolic links on its paths, and never replaces a `huntaway` command it didn't create. [install]
 
+## Installing from npm or Homebrew
+
+- **The package folder is trusted as installed.** npm or Homebrew keeps the package where it installs packages. Anyone
+  who can write to that folder already controls the launcher, so the checks below can't protect you from them.
+- **Your own copy, checked on every run.** Huntaway runs only from your owner-only copy in
+  `~/.local/share/huntaway/app`, checked against the package's checksums on every run. This is integrity, not
+  authenticity: it shows the copy matches the package as npm or Homebrew installed it, not who made that package. A
+  mismatch is refused, never repaired.
+- **No network and no shell.** The launcher uses no network and runs no shell.
+
 ## The Pipe
 
 The Pipe's own protections (each account's own login folder, a service that listens only on `127.0.0.1` behind one
 owner-only token, a clean job environment with no API keys, bounded output treated as untrusted, prepaid subscriptions
 only, and no telemetry) are described under "Security model" in [pipe/README.md](pipe/README.md).
+
+- **Claude jobs aren't sandboxed by the Pipe.** A Claude job that changes files runs as you, inside only Claude
+  Code's own sandbox, which covers its shell commands and still allows the macOS Keychain service. So such a job can
+  read items in your Keychain. Give the Pipe only repositories and tasks you trust.
 
 These protections are limits on what the code does, not a guarantee. Read the code, and report anything that falls
 short of them.

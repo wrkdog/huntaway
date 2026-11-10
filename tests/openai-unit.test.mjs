@@ -190,7 +190,7 @@ test('CLI, key commands, doctor, and the fetch worker use OpenAI without a socke
   const root = setup();
   const home = join(root, 'home');
   const data = join(home, 'data');
-  mkdirSync(data, { recursive: true });
+  mkdirSync(data, { recursive: true, mode: 0o700 });
   const preload = join(root, 'fetch.mjs');
   const callsFile = join(root, 'calls');
   writeFileSync(preload, `

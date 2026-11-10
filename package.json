@@ -1,9 +1,34 @@
 {
-  "name": "huntaway",
-  "version": "0.1.0",
-  "private": true,
+  "name": "@wrkdog/huntaway",
+  "version": "0.1.1",
   "license": "Apache-2.0",
   "type": "module",
+  "repository": "https://github.com/wrkdog/huntaway",
+  "publishConfig": { "access": "public" },
+  "bin": {
+    "huntaway": "npm/huntaway.mjs",
+    "pipe": "npm/pipe.mjs",
+    "pipe-mcp": "npm/pipe-mcp.mjs"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "contract/",
+    "npm/",
+    "pipe/",
+    "!pipe/test/",
+    "skills/",
+    "openclaw/",
+    "README.md",
+    "SECURITY.md",
+    "SETUP-WITH-YOUR-ASSISTANT.md",
+    "CONTRIBUTING.md",
+    "CODE_OF_CONDUCT.md",
+    "LICENSE",
+    "NOTICE",
+    "SHA256SUMS",
+    "package.json"
+  ],
   "scripts": {
     "test": "node --experimental-strip-types --test tests/*.test.mjs"
   },
